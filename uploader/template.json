@@ -1,0 +1,53 @@
+{
+    "dash": {
+      "layout_type": "ordered",
+      "is_read_only": false,
+      "title": "Microservice APM Dashboard",
+      "description": "Dashboard for monitoring microservice performance",
+      "graphs": [
+        {
+          "definition": {
+            "requests": [
+              {
+                "q": "avg:trace.http.request.duration{service:<MICROSERVICE_NAME>}.rollup(avg, 60)"
+              }
+            ],
+            "viz": "timeseries",
+            "autoscale": true,
+            "type": "line",
+            "title": "Average Trace Duration"
+          },
+          "title": "Average Trace Duration"
+        },
+        {
+          "definition": {
+            "requests": [
+              {
+                "q": "sum:trace.http.request.error{service:<MICROSERVICE_NAME>}.rollup(sum, 60)"
+              }
+            ],
+            "viz": "timeseries",
+            "autoscale": true,
+            "type": "line",
+            "title": "Error Count"
+          },
+          "title": "Error Count"
+        },
+        {
+          "definition": {
+            "requests": [
+              {
+                "q": "sum:trace.http.request.hits{service:<MICROSERVICE_NAME>}.rollup(sum, 60)"
+              }
+            ],
+            "viz": "timeseries",
+            "autoscale": true,
+            "type": "line",
+            "title": "Trace Hits"
+          },
+          "title": "Trace Hits"
+        }
+      ]
+    }
+  }
+  
